@@ -76,6 +76,7 @@ export default function Navbar() {
                 <IoSearchSharp className="text-xl"/>
                 <IoCartOutline className="text-xl"/>
                 <a className="ml-4 btn btn-outline btn-primary hover:text-white">Appointment</a>
+                <Link href='/login' className="ml-4 btn btn-primary hover:text-white">Login</Link>
             </div>
         </nav>
     )
