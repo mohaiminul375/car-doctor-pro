@@ -15,6 +15,7 @@ export default function page() {
             password: (form.elements.namedItem('password') as HTMLInputElement).value,
         };
         console.log(newUser)
+        const res = await fetch("");
     }
     return (
         <section className="container mx-auto p-24">

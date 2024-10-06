@@ -1,7 +1,7 @@
 import { connectDB } from "@/lib/connectDB";
 import { NextRequest, NextResponse } from 'next/server';
 import { Collection } from 'mongodb';
-
+import bcrypt from 'bcrypt';
 interface User {
     name: string;
     email: string;
@@ -21,7 +21,8 @@ export const POST = async (request: NextRequest) => {
         }
 
         // Insert new user
-        const res = await userCollection.insertOne(newUser);
+        const hasPassword = await bcrypt.hashSync(newUser.password, 5);
+        const res = await userCollection.insertOne({ ...newUser, password: hasPassword });
         return NextResponse.json({ message: 'User Created' }, { status: 200 });
     } catch (error) {
         console.error(error);
